@@ -1,0 +1,7 @@
+include README.md
+include LICENSE
+include MANIFEST.in
+include setup.py
+include cepko/__init__.py
+include cepko/cepko.py
+include cepko/tests.py
