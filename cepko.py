@@ -1,3 +1,18 @@
+"""
+cepko implements easy-to-use communication with CloudSigma's VMs through
+a virtual serial port without bothering with formatting the messages
+properly nor parsing the output with the specific and sometimes
+confusing shell tools for that purpose.
+
+Having the server definition accessible by the VM can ve useful in various ways.
+For example it is possible to easily determine from within the VM, which network
+interfaces are connected to public and which to private network. Another use is
+to pass some data to initial VM setup scripts, like setting the hostname to the
+VM name or passing ssh public keys through server meta.
+
+For more information take a look at the Server Context section of CloudSigma
+API Docs: http://cloudsigma-docs.readthedocs.org/en/latest/server_context.html
+"""
 import json
 import platform
 
@@ -9,6 +24,10 @@ if platform.system() == 'Windows':
 
 
 class Cepko(object):
+    """
+    One instance of that object could be use for one or more
+    queries to the serial port.
+    """
     request_pattern = "<\n{}\n>"
 
     def get(self, key="", request_pattern=None):
@@ -29,6 +48,11 @@ class Cepko(object):
 
 
 class CepkoResult(object):
+    """
+    CepkoResult executes the request to the virtual serial port as soon
+    as the instance is initialized and stores the result in both raw and
+    marshalled format.
+    """
     def __init__(self, request):
         self.request = request
         self.raw_result = self._execute()
