@@ -84,7 +84,7 @@ class CepkoResultTests(TestCase):
 
     @mock.patch("cepko.CepkoResult._execute", lambda *args: json.dumps(BIG_DICT['tags']))
     def test_with_list_as_result(self):
-        result = self.c.all()
+        result = self.c.get('tags')
         self.assertEqual('much server', result[0])
         self.assertTrue('very performance' in result)
         self.assertEqual(2, len(result))
