@@ -1,17 +1,15 @@
-try:
-    from distutils.core import setup
-except ImportError:
-    from setuptools import setup
+from setuptools import setup
 
 setup(
     name="cepko",
     packages=["cepko"],
-    version="1.0",
+    version="1.0.1",
     description="Communication with CloudSigma's VMs through a virtual serial port",
     author="CloudSigma AG",
     author_email="dev-support@cloudsigma.com",
     url="https://github.com/cloudsigma/cepko",
     keywords=["cepko", "cloud", "cloudsigma", "serial port", "serial", "console"],
+    install_requires=['pyserial'],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
